@@ -98,3 +98,6 @@ class Rook(Figure):
         moves += [str(self.point.pos_x + b) + str(self.point.pos_y) for b in range(-8, 9)
                   if 1 <= self.point.pos_x + b <= 8]
         return set(moves)
+
+    def delete(self):
+        pass
