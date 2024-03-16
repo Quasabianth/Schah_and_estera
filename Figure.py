@@ -49,11 +49,3 @@ class King(Figure):
 
     def delete(self):
         pass
-
-class Knight(Figure):
-    def __init__(self, color: int, point: Point):
-        self.color = color
-        self.moves = self.move()
-        self.points = point
-
-    def 
