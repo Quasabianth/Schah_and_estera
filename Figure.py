@@ -27,3 +27,6 @@ class Pawn(Figure):
             if self.pos_y == 7:
                 moves.append(str(self.pos_x + 1) + str(5))
         return set(moves)
+
+    def delete(self):
+        pass
