@@ -10,6 +10,7 @@ class Pawn(Figure):
         self.color = color
         self.moves = self.move()
         self.point = point
+        self.identifier = 'Pawn'
 
     def move(self) -> set:
         moves = []
@@ -36,6 +37,7 @@ class King(Figure):
         self.color = color
         self.moves = self.move()
         self.point = point
+        self.identifier = 'King'
 
     def move(self) -> set:
         moves = [str(self.point.pos_x + a) + str(self.point.pos_y + b) for a in [-1, 0, 1] for b in [-1, 0, 1]
@@ -52,15 +54,16 @@ class Knight(Figure):
         self.color = color
         self.moves = self.move()
         self.point = point
+        self.identifier = 'Knight'
 
     def move(self) -> set:
         moves = []
         knight_moves = [[1, 2], [2, 1], [-1, 2], [-2, 1], [-2, -1], [-1, -2], [1, -2], [2, -1]]
-        moves += [str(self.point.pos_x + a) + str(self.point.pos_y + b) for a, b in knight_moves 
+        moves += [str(self.point.pos_x + a) + str(self.point.pos_y + b) for a, b in knight_moves
                   if 1 <= self.point.pos_x + a <= 8
                   if 1 <= self.point.pos_y + b <= 8]
         return set(moves)
-    
+
     def delete(self):
         pass
 
@@ -70,6 +73,7 @@ class Bishop(Figure):
         self.color = color
         self.moves = self.move()
         self.point = point
+        self.identifier = 'Bishop'
 
     def move(self) -> set:
         moves = []
@@ -90,6 +94,7 @@ class Rook(Figure):
         self.color = color
         self.moves = self.move()
         self.point = point
+        self.identifier = 'Rook'
 
     def move(self) -> set:
         moves = []
