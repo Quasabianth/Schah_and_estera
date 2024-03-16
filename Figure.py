@@ -2,7 +2,8 @@ import Point
 
 
 class Figure:
-    pass
+    def delete(self):
+        pass
 
 
 class Pawn(Figure):
@@ -28,9 +29,6 @@ class Pawn(Figure):
                 moves.append(str(self.point.pos_x + 1) + str(5))
         return set(moves)
 
-    def delete(self):
-        pass
-
 
 class King(Figure):
     def __init__(self, color: str, point: Point):
@@ -44,9 +42,6 @@ class King(Figure):
                  if 1 <= self.point.pos_x + a <= 8
                  if 1 <= self.point.pos_y + b <= 8]
         return set(moves)
-
-    def delete(self):
-        pass
 
 
 class Knight(Figure):
@@ -63,9 +58,6 @@ class Knight(Figure):
                   if 1 <= self.point.pos_x + a <= 8
                   if 1 <= self.point.pos_y + b <= 8]
         return set(moves)
-
-    def delete(self):
-        pass
 
 
 class Bishop(Figure):
@@ -85,9 +77,6 @@ class Bishop(Figure):
                   if 1 <= self.point.pos_y - a <= 8]
         return set(moves)
 
-    def delete(self):
-        pass
-
 
 class Rook(Figure):
     def __init__(self, color: str, point: Point):
@@ -103,9 +92,6 @@ class Rook(Figure):
         moves += [str(self.point.pos_x + b) + str(self.point.pos_y) for b in range(-8, 9)
                   if 1 <= self.point.pos_x + b <= 8]
         return set(moves)
-
-    def delete(self):
-        pass
 
 
 class Queen(Figure):
@@ -128,6 +114,3 @@ class Queen(Figure):
         moves += [str(self.point.pos_x + b) + str(self.point.pos_y) for b in range(-8, 9)
                   if 1 <= self.point.pos_x + b <= 8]
         return set(moves)
-
-    def delete(self):
-        pass
