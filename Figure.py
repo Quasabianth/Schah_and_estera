@@ -1,6 +1,7 @@
 class Figure:
     pass
 
+
 class Pawn(Figure):
     def __init__(self, pos: str, color: int):
         self.pos_x = int(pos[0])
