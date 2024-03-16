@@ -63,3 +63,38 @@ class Knight(Figure):
     
     def delete(self):
         pass
+
+
+class Bishop(Figure):
+    def __init__(self, color: int, point: Point):
+        self.color = color
+        self.moves = self.move()
+        self.point = point
+
+    def move(self) -> set:
+        moves = []
+        moves += [str(self.point.pos_x + a) + str(self.point.pos_y + a) for a in range(-8, 9)
+                  if 1 <= self.point.pos_x + a <= 8
+                  if 1 <= self.point.pos_y + a <= 8]
+        moves += [str(self.point.pos_x + a) + str(self.point.pos_y - a) for a in range(-8, 9)
+                  if 1 <= self.point.pos_x + a <= 8
+                  if 1 <= self.point.pos_y - a <= 8]
+        return set(moves)
+
+    def delete(self):
+        pass
+
+
+class Rook(Figure):
+    def __init__(self, color: int, point: Point):
+        self.color = color
+        self.moves = self.move()
+        self.point = point
+
+    def move(self) -> set:
+        moves = []
+        moves += [str(self.point.pos_x) + str(self.point.pos_y + a) for a in range(-8, 9)
+                  if 1 <= self.point.pos_y + a <= 8]
+        moves += [str(self.point.pos_x + b) + str(self.point.pos_y) for b in range(-8, 9)
+                  if 1 <= self.point.pos_x + b <= 8]
+        return set(moves)
