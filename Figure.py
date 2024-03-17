@@ -42,11 +42,12 @@ class Pawn(Figure):
 
 
 class King(Figure):
-    def __init__(self, color: str, point: Point, is_castle_possible: bool):
+    def __init__(self, color: str, point: Point, is_castle1_possible: bool, is_castle2_possible: bool):
         Figure.__init__(self, color, point)
         self.moves = self.move()
         self.identifier = 'King'
-        self.is_castle_possible = is_castle_possible
+        self.is_castle2_possible = is_castle1_possible
+        self.is_castle2_possible = is_castle2_possible
 
     def move(self) -> set:
         moves = [str(self.point.pos_x + a) + str(self.point.pos_y + b) for a in [-1, 0, 1] for b in [-1, 0, 1]
@@ -88,10 +89,11 @@ class Bishop(Figure):
 
 
 class Rook(Figure):
-    def __init__(self, color: str, point: Point, is_castle_possible: bool):
+    def __init__(self, color: str, point: Point, is_castle1_possible: bool, is_castle2_possible: bool):
         Figure.__init__(self, color, point)
         self.moves = self.move()
-        self.is_castle_possible = is_castle_possible
+        self.is_castle2_possible = is_castle1_possible
+        self.is_castle2_possible = is_castle2_possible
         self.identifier = 'Rook'
 
     def move(self) -> set:
