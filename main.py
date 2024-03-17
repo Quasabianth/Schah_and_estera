@@ -12,16 +12,18 @@ def start_game():
             assert 1 <= pos_y <= 8
             if name == "pawn":
                 points[pos_x][pos_y].object = Figure.Pawn(color, points[pos_x][pos_y])
-            if name == "rook":
+            elif name == "rook":
                 points[pos_x][pos_y].object = Figure.Rook(color, points[pos_x][pos_y])
-            if name == "bishop":
+            elif name == "bishop":
                 points[pos_x][pos_y].object = Figure.Bishop(color, points[pos_x][pos_y])
-            if name == "knight":
+            elif name == "knight":
                 points[pos_x][pos_y].object = Figure.Knight(color, points[pos_x][pos_y])
-            if name == "king":
+            elif name == "king":
                 points[pos_x][pos_y].object = Figure.King(color, points[pos_x][pos_y])
-            if name == "queen":
+            elif name == "queen":
                 points[pos_x][pos_y].object = Figure.Queen(color, points[pos_x][pos_y])
+            else:
+                raise TypeError
             inp = input_file.readline().rstrip()
 
 
