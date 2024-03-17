@@ -2,15 +2,19 @@ import Point
 
 
 class Figure:
+    def __init__(self, color: str, point: Point):
+        self.color = color
+        self.point = point
+
     def delete(self):
-        pass
+        self.point.object = None
+        self.point = None
 
 
 class Pawn(Figure):
     def __init__(self, color: str, point: Point):
-        self.color = color
+        Figure.__init__(self, color, point)
         self.moves = self.move()
-        self.point = point
         self.identifier = 'Pawn'
 
     def move(self) -> set:
@@ -32,9 +36,8 @@ class Pawn(Figure):
 
 class King(Figure):
     def __init__(self, color: str, point: Point):
-        self.color = color
+        Figure.__init__(self, color, point)
         self.moves = self.move()
-        self.point = point
         self.identifier = 'King'
 
     def move(self) -> set:
@@ -46,9 +49,8 @@ class King(Figure):
 
 class Knight(Figure):
     def __init__(self, color: str, point: Point):
-        self.color = color
+        Figure.__init__(self, color, point)
         self.moves = self.move()
-        self.point = point
         self.identifier = 'Knight'
 
     def move(self) -> set:
@@ -62,9 +64,8 @@ class Knight(Figure):
 
 class Bishop(Figure):
     def __init__(self, color: str, point: Point):
-        self.color = color
+        Figure.__init__(self, color, point)
         self.moves = self.move()
-        self.point = point
         self.identifier = 'Bishop'
 
     def move(self) -> set:
@@ -80,9 +81,8 @@ class Bishop(Figure):
 
 class Rook(Figure):
     def __init__(self, color: str, point: Point):
-        self.color = color
+        Figure.__init__(self, color, point)
         self.moves = self.move()
-        self.point = point
         self.identifier = 'Rook'
 
     def move(self) -> set:
@@ -96,9 +96,8 @@ class Rook(Figure):
 
 class Queen(Figure):
     def __init__(self, color: str, point: Point):
-        self.color = color
+        Figure.__init__(self, color, point)
         self.moves = self.move()
-        self.point = point
         self.identifier = 'Queen'
 
     def move(self) -> set:
