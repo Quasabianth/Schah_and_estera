@@ -46,7 +46,7 @@ class King(Figure):
         Figure.__init__(self, color, point)
         self.moves = self.move()
         self.identifier = 'King'
-        self.is_castle2_possible = is_castle1_possible
+        self.is_castle1_possible = is_castle1_possible
         self.is_castle2_possible = is_castle2_possible
 
     def move(self) -> set:
@@ -54,6 +54,11 @@ class King(Figure):
                  if 1 <= self.point.pos_x + a <= 8
                  if 1 <= self.point.pos_y + b <= 8]
         return set(moves)
+    
+    def move_figure(self, point: Point):
+        Figure.move_figure(self, point)
+        self.is_castle1_possible = False
+        self.is_castle2_possible = False
 
 
 class Knight(Figure):
