@@ -10,6 +10,13 @@ class Figure:
         self.point.object = None
         self.point = None
 
+    def move_figure(self, point: Point):
+        if point.object:
+            point.object.point = None
+        self.point.object = None
+        point.object = self
+        self.point = point
+
 
 class Pawn(Figure):
     def __init__(self, color: str, point: Point):
