@@ -13,13 +13,15 @@ def start_game():
             if name == "pawn":
                 points[pos_x][pos_y].object = Figure.Pawn(color, points[pos_x][pos_y])
             elif name == "rook":
-                points[pos_x][pos_y].object = Figure.Rook(color, points[pos_x][pos_y])
+                points[pos_x][pos_y].object = Figure.Rook(color, points[pos_x][pos_y], 
+                                                          True, True)
             elif name == "bishop":
                 points[pos_x][pos_y].object = Figure.Bishop(color, points[pos_x][pos_y])
             elif name == "knight":
                 points[pos_x][pos_y].object = Figure.Knight(color, points[pos_x][pos_y])
             elif name == "king":
-                points[pos_x][pos_y].object = Figure.King(color, points[pos_x][pos_y])
+                points[pos_x][pos_y].object = Figure.King(color, points[pos_x][pos_y],
+                                                          True, True)
             elif name == "queen":
                 points[pos_x][pos_y].object = Figure.Queen(color, points[pos_x][pos_y])
             else:
@@ -30,3 +32,4 @@ def start_game():
 if __name__ == '__main__':
     points = [[Point.Point(x, y, None) for x in range(1, 9)] for y in range(1, 9)]
     start_game()
+
