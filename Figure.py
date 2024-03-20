@@ -40,6 +40,48 @@ class Pawn(Figure):
                 moves.append(str(self.point.pos_x + 1) + str(5))
         return set(moves)
 
+    def possible_moves(self, points: list[list[Point.Point]]) -> set:
+        moves = set()
+        if self.color == 'w':
+            if points[self.point.pos_x][self.point.pos_y + 1].object is None:
+                moves.add(str(self.point.pos_x) + str(self.point.pos_y) +
+                          str(self.point.pos_x) + str(self.point.pos_y + 1))
+                if self.point.pos_y == 2:
+                    if points[self.point.pos_x][self.point.pos_y + 2].object is None:
+                        moves.add(str(self.point.pos_x) + str(self.point.pos_y) +
+                                  str(self.point.pos_x) + str(self.point.pos_y + 2))
+            if 1 <= self.point.pos_x <= 7:
+                if points[self.point.pos_x + 1][self.point.pos_y + 1].object is not None:
+                    if points[self.point.pos_x - 1][self.point.pos_y + 1].object.color != self.color:
+                        moves.add(str(self.point.pos_x) + str(self.point.pos_y) +
+                                  str(self.point.pos_x + 1) + str(self.point.pos_y + 1))
+            if 2 <= self.point.pos_x <= 8:
+                if points[self.point.pos_x - 1][self.point.pos_y + 1].object is not None:
+                    if points[self.point.pos_x - 1][self.point.pos_y + 1].object.color != self.color:
+                        moves.add(str(self.point.pos_x) + str(self.point.pos_y) +
+                                  str(self.point.pos_x - 1) + str(self.point.pos_y + 1))
+        elif self.color == 'b':
+            if points[self.point.pos_x][self.point.pos_y - 1].object is None:
+                moves.add(str(self.point.pos_x) + str(self.point.pos_y) +
+                          str(self.point.pos_x) + str(self.point.pos_y - 1))
+                if self.point.pos_y == 7:
+                    if points[self.point.pos_x][self.point.pos_y - 2].object is None:
+                        moves.add(str(self.point.pos_x) + str(self.point.pos_y) +
+                                  str(self.point.pos_x) + str(self.point.pos_y - 2))
+            if 1 <= self.point.pos_x <= 7:
+                if points[self.point.pos_x + 1][self.point.pos_y - 1].object is not None:
+                    if points[self.point.pos_x - 1][self.point.pos_y + 1].object.color != self.color:
+                        moves.add(str(self.point.pos_x) + str(self.point.pos_y) +
+                                  str(self.point.pos_x + 1) + str(self.point.pos_y - 1))
+            if 2 <= self.point.pos_x <= 8:
+                if points[self.point.pos_x - 1][self.point.pos_y + 1].object is not None:
+                    if points[self.point.pos_x - 1][self.point.pos_y + 1].object.color != self.color:
+                        moves.add(str(self.point.pos_x) + str(self.point.pos_y) +
+                                  str(self.point.pos_x - 1) + str(self.point.pos_y - 1))
+        else:
+            raise NotImplemented
+        return moves
+
 
 class King(Figure):
     def __init__(self, color: str, point: Point, is_castle1_possible: bool, is_castle2_possible: bool):
@@ -54,7 +96,7 @@ class King(Figure):
                  if 1 <= self.point.pos_x + a <= 8
                  if 1 <= self.point.pos_y + b <= 8]
         return set(moves)
-    
+
     def move_figure(self, point: Point):
         Figure.move_figure(self, point)
         self.is_castle1_possible = False
